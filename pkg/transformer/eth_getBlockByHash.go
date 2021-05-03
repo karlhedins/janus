@@ -73,7 +73,7 @@ func (p *ProxyETHGetBlockByHash) request(req *eth.GetBlockByHashRequest) (*eth.G
 		// TODO: researching
 		// ? What value to put
 		// - Temporary set this value to be always zero
-		ExtraData: "0x0",
+		ExtraData: "0x00",
 
 		Nonce:            hexutil.EncodeUint64(uint64(block.Nonce)),
 		Size:             hexutil.EncodeUint64(uint64(block.Size)),
