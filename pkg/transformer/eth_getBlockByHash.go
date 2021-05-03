@@ -1,6 +1,8 @@
 package transformer
 
 import (
+	"fmt"
+
 	"github.com/ethereum/go-ethereum/common/hexutil"
 	"github.com/pkg/errors"
 	"github.com/qtumproject/janus/pkg/eth"
@@ -75,7 +77,7 @@ func (p *ProxyETHGetBlockByHash) request(req *eth.GetBlockByHashRequest) (*eth.G
 		// - Temporary set this value to be always zero
 		ExtraData: "0x00",
 
-		Nonce:            hexutil.EncodeUint64(uint64(block.Nonce)),
+		Nonce:            fmt.Sprintf("0x%016x", block.Nonce),
 		Size:             hexutil.EncodeUint64(uint64(block.Size)),
 		Difficulty:       hexutil.EncodeUint64(uint64(blockHeader.Difficulty)),
 		StateRoot:        utils.AddHexPrefix(blockHeader.HashStateRoot),
